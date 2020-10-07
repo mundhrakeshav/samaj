@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+.appbar {
+  color: aliceblue;
+  padding-top: 1vh;
+  border-bottom: rgb(236, 227, 227) 0.5px solid;
+}
+.appbar-brand {
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+}
+.appbar-brand > span {
+  color: rgb(204, 227, 247);
+}
+
+.form {
+  background-color: transparent;
+  margin-top: 2vh;
+  float: right;
+}
+.form-inputbox {
+  background-color: transparent;
+}
+
+.button-column {
+  margin-top: 2vh;
+}
+
+/* .button-appbar {
+  background-color: transparent;
+  border: 1px solid rgb(100, 94, 94);
+  color: rgb(145, 139, 139);
+  float: left;
+  margin: 0 1vh;
+}
+
+.button-appbar:hover {
+  background-color: transparent;
+  box-shadow: rgb(100, 94, 94);
+  border: 1px solid rgb(100, 94, 94);
+}
+
+.button-appbar:focus {
+  background-color: transparent;
+  box-shadow: 0 0 1rem 3px rgb(100, 94, 94);
+  border: 1px solid rgb(100, 94, 94);
+} */
+
+.column-last {
+  margin-top: 2.5vh;
+}
+
+.user-address {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.user-address:hover {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.user-icon {
+  margin-right: 0.2rem;
+}
+.column-last > span {
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
