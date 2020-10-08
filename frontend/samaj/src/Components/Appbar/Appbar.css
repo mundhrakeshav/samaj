@@ -1,12 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+.appbar-container {
+  margin: 0;
+  padding: 0;
+}
+
 .appbar {
   color: aliceblue;
-  padding-top: 1vh;
-  border-bottom: rgb(236, 227, 227) 0.5px solid;
+  /* padding-top: 1vh; */
+  padding: 0;
+  border-bottom: rgb(59, 59, 59) solid 1px;
+  background-image: linear-gradient(rgb(12, 12, 12), rgb(24, 23, 23));
 }
 .appbar-brand {
   font-size: 2rem;
   font-family: "Poppins", sans-serif;
+  padding-left: 6vw;
 }
 .appbar-brand > span {
   color: rgb(204, 227, 247);

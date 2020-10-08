@@ -18,7 +18,7 @@ const Appbar = () => {
   const { userAddress } = useContext(Web3Context);
 
   return (
-    <Container>
+    <Container fluid className="appbar-container">
       <div className="appbar">
         <Row>
           <Col>
