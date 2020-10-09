@@ -1,0 +1,13 @@
+.blog-upload-form {
+  width: 70%;
+  margin: 3vw auto;
+  text-align: left;
+}
+.profile-image-input {
+  width: 50vw;
+}
+
+.submit-button-column .submit-button {
+  float: right;
+  margin-top: 20px;
+}

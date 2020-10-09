@@ -1,6 +1,13 @@
 //All contracts correspond to rinkeby network
 
 module.exports = {
+  tellorDataIDs: {
+    dai: 39,
+    usd: 1,
+    bnb: 3,
+    trx: 12,
+  },
+
   contractAddress: {
     tellorGetLatestPrice: "0x1913713d479259580Be39969C89f4d162dA3b2d3",
     erc20NonApproveWithSignature: "0xA5D71ce2297Ff3c025Ece1F1Ea7975a76E0a1aD2",

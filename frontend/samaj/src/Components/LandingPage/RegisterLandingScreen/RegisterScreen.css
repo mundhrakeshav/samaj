@@ -1,0 +1,32 @@
+.input-form {
+  max-width: 50vw;
+  margin: 20vh auto 0;
+  justify-content: left;
+  text-align: justify;
+}
+
+.input {
+  background-color: rgb(29, 28, 28);
+  color: white;
+  font-size: 20px;
+}
+.input:focus {
+  background-color: rgb(29, 28, 28);
+  border: 2px solid whitesmoke;
+  color: white;
+}
+
+.input-prepend {
+  background-color: rgb(29, 28, 28);
+  color: aliceblue;
+}
+
+.profile-image-input {
+  align-self: start;
+  font-size: 12px;
+  padding: 2px 30vw 2px 0;
+}
+
+.profile-image {
+  border: none;
+}

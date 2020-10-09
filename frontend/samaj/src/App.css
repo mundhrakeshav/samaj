@@ -1,7 +1,8 @@
 .App {
   text-align: center;
-  background-color: #0d0e0e;
   height: 100vh;
   margin: 0;
   padding: 0;
+  color: whitesmoke;
+  background-color: rgb(44, 43, 43);
 }
