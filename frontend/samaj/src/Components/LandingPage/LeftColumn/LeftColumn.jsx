@@ -7,7 +7,7 @@ import "./LeftColumn.css";
 const LeftColumn = () => {
   return (
     <Container className="left-column-container">
-      <Row class="left-column-row">
+      <Row className="left-column-row">
         <Link to="/">
           <Button variant="dark" className="left-column-button">
             <FaHome /> Home
