@@ -14,6 +14,7 @@ import AddNewBlog from "../AddNewBlog/AddNewBlog";
 import AddNewreasearchpaper from "../AddNewResearchpaper/AddNewResearchPaper";
 import AddNewPatent from "../AddNewPatent/AddNewPatent";
 import AddNewPost from "../AddNewPost/AddNewPost";
+import RightColumn from "./RightColumn/RightColumn";
 const LandingPage = () => {
   const { samajContract, userAddress } = useContext(Web3Context);
   const { user, setUser } = useContext(UserContext);
@@ -52,13 +53,7 @@ const LandingPage = () => {
             </Switch>
           </Col>
           <Col xl={3} className="right-column">
-            3 of 3
-            <button
-              onClick={async () => {
-                console.log(user);
-              }}>
-              CLICK
-            </button>
+            <RightColumn />
           </Col>
         </Row>
       </Container>

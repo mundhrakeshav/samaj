@@ -23,8 +23,8 @@ const RegisterScreen = () => {
   );
 
   const [profileImage, setImage] = useState(null);
-  const [userName, setUserName] = useState("");
   const [profileImageBuffer, setBuffer] = useState(null);
+  const [userName, setUserName] = useState("");
   const [bio, setBio] = useState("");
   const [profileImageHash, setProfileImageHash] = useState(null);
 

@@ -13,6 +13,16 @@ let _web3 = new Web3();
 const Web3ContextProvider = (props) => {
   const [userAddress, setAddress] = useState(null);
   const [samajContract, setSamajContract] = useState();
+  const [
+    erc20ApproveWithSignContract,
+    seterc20ApproveWithSignContract,
+  ] = useState();
+
+  const [
+    erc20NonApproveWithSignContract,
+    seterc20NonApproveWithSignContract,
+  ] = useState();
+
   const [web3, setWeb3] = useState(_web3);
   const [isLoading, setLoading] = useState(true);
   const [user, setUser] = useState({});
@@ -31,13 +41,29 @@ const Web3ContextProvider = (props) => {
 
         biconomy
           .onEvent(biconomy.READY, async () => {
-            const samajContract = new web3.eth.Contract(
+            const _samajContract = new web3.eth.Contract(
               ContractsMetaData.contractABI.samaj,
               ContractsMetaData.contractAddress.samaj
             );
-            samajContract.setProvider(biconomy);
 
-            setSamajContract(samajContract);
+            const _erc20ApproveWithSignatureContract = new web3.eth.Contract(
+              ContractsMetaData.contractABI.erc20ApproveWithSignature,
+              ContractsMetaData.contractAddress.erc20ApproveWithSignature
+            );
+
+            const _erc20NonApproveWithSignatureContract = new web3.eth.Contract(
+              ContractsMetaData.contractABI.erc20NonApproveWithSignature,
+              ContractsMetaData.contractAddress.erc20NonApproveWithSignature
+            );
+            _erc20ApproveWithSignatureContract.setProvider(biconomy);
+            _erc20NonApproveWithSignatureContract.setProvider(biconomy);
+            _samajContract.setProvider(biconomy);
+
+            setSamajContract(_samajContract);
+            seterc20ApproveWithSignContract(_erc20ApproveWithSignatureContract);
+            seterc20NonApproveWithSignContract(
+              _erc20NonApproveWithSignatureContract
+            );
             setLoading(false);
             provider.on("accountsChanged", function (accounts) {
               setAddress(accounts[0]);
@@ -57,7 +83,71 @@ const Web3ContextProvider = (props) => {
     }
   };
 
-  //functionDataExample = contract.methods.setQuote("New Quote via meat TX")
+  //functionDataExample = contract.methods.setQuote("New Quote via meta TX")
+
+  const sendTransactionToERC20ApproveWithSignature = async (functionData) => {
+    if (erc20ApproveWithSignContract) {
+      let nonce = await erc20ApproveWithSignContract.methods
+        .getNonce(userAddress)
+        .call();
+      let functionSignature = functionData.encodeABI();
+      let messageToSign = constructMetaTransactionMessage(
+        nonce,
+        4,
+        functionSignature,
+        ContractsMetaData.contractAddress.erc20ApproveWithSignature
+      );
+      const signature = await web3.eth.personal.sign(
+        "0x" + messageToSign.toString("hex"),
+        userAddress
+      );
+      console.info(`User signature is ${signature}`);
+      let { r, s, v } = getSignatureParameters(signature);
+      relayTransactionToERC20ApproveWithSignContract(
+        userAddress,
+        functionSignature,
+        r,
+        s,
+        v
+      );
+    }
+  };
+
+  const relayTransactionToERC20ApproveWithSignContract = async (
+    userAddress,
+    functionData,
+    r,
+    s,
+    v
+  ) => {
+    if (web3 && erc20ApproveWithSignContract) {
+      try {
+        let gasLimit = await erc20ApproveWithSignContract.methods
+          .executeMetaTransaction(userAddress, functionData, r, s, v)
+          .estimateGas();
+        let gasPrice = await web3.eth.getGasPrice();
+        console.log(gasLimit);
+        console.log(gasPrice);
+        let tx = erc20ApproveWithSignContract.methods
+          .executeMetaTransaction(userAddress, functionData, r, s, v)
+          .send({
+            from: userAddress,
+            gasPrice: web3.utils.toHex(gasPrice),
+            gasLimit: web3.utils.toHex(gasLimit),
+          });
+
+        tx.on("transactionHash", function (hash) {
+          console.log(`Transaction hash is ${hash}`);
+          alert(`Transaction sent by relayer with hash ${hash}`);
+        }).once("confirmation", function (confirmationNumber, receipt) {
+          console.log(receipt);
+          alert("Transaction confirmed on chain");
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   const sendTransaction = async (functionData) => {
     if (samajContract) {
@@ -142,11 +232,15 @@ const Web3ContextProvider = (props) => {
   return (
     <Web3Context.Provider
       value={{
+        samajContractAddress: ContractsMetaData.contractAddress.samaj,
         web3,
+        sendTransactionToERC20ApproveWithSignature,
         init,
         userAddress,
         samajContract,
         isLoading,
+        erc20ApproveWithSignContract,
+        erc20NonApproveWithSignContract,
         sendTransaction,
       }}>
       {props.children}

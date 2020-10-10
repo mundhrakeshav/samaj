@@ -7,6 +7,7 @@ import {
   FaBlogger,
   FaUpload,
   FaLock,
+  FaMoneyBillAlt,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./LeftColumn.css";
@@ -28,6 +29,7 @@ const LeftColumn = () => {
           </Button>
         </Link>
       </Row>
+      <br />
       <Row>
         <Link to="/addnewblog">
           <Button variant="dark" className="left-column-button">
@@ -53,6 +55,14 @@ const LeftColumn = () => {
         <Link to="/addnewpost">
           <Button variant="dark" className="left-column-button">
             <FaUpload /> Post
+          </Button>
+        </Link>
+      </Row>
+      <br />
+      <Row>
+        <Link to="/approvals">
+          <Button variant="dark" className="left-column-button">
+            <FaMoneyBillAlt /> Approvals
           </Button>
         </Link>
       </Row>
