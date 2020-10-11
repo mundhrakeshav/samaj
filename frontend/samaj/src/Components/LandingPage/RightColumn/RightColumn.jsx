@@ -9,9 +9,15 @@ import {
 } from "react-bootstrap";
 import Web3 from "web3";
 import { Web3Context } from "../../../context/Web3Context";
+import { toast } from "react-toastify";
+import axios from "axios";
+import StripeCheckout from "react-stripe-checkout";
 import "./RightColumn.css";
+import serverConfig from "../../../serverConfig";
 const web3 = new Web3();
 var BN = web3.utils.BN;
+
+toast.configure();
 
 const RightColumn = () => {
   const {
@@ -27,6 +33,32 @@ const RightColumn = () => {
   const [kmAllowance, setkmAllowance] = useState(0);
   const [daiAmount, setDaiAmount] = useState();
   const [kmAmount, setKmAmount] = useState();
+
+  const [product] = useState({
+    name: "SamajUSD",
+    price: "100",
+  });
+
+  const handleToken = async (token, addresses) => {
+    console.log(token, addresses);
+    const response = await axios.post(`${serverConfig.baseUrl}/payviacard`, {
+      token,
+      product,
+      address: userAddress,
+    });
+    console.log(response.data);
+    const { status } = response.data;
+    alert(status);
+    if (status == "success") {
+      toast("Success! Balance will be updated in a moment", {
+        type: "success",
+      });
+    } else {
+      toast("Something went wrong", {
+        type: "error",
+      });
+    }
+  };
 
   useEffect(() => {
     init();
@@ -84,18 +116,14 @@ const RightColumn = () => {
     <div className="right-column">
       <Container>
         <Row className="dai-head head">Dai: </Row>
-
         <Row className="dai-balance balance">
           <Col>Balance:</Col>
           <Col>{daiBalance} DAI</Col>
         </Row>
-
         <Row className="dai-allowance allowance">
           <Col>Allowance:</Col>
           <Col>{daiAllowance} DAI</Col>
         </Row>
-        <br />
-
         <br />
         <Button
           variant="dark"
@@ -103,22 +131,16 @@ const RightColumn = () => {
           onClick={increaseDaiAllowance}>
           Allow 100 Token Transfer
         </Button>
-
         <hr />
-
         <Row className="km-head head">KM: </Row>
-
         <Row className="km-balance balance">
           <Col>Balance:</Col>
           <Col>{kmBalance} KM</Col>
         </Row>
-
         <Row className="km-allowance allowance">
           <Col>Allowance:</Col>
           <Col>{kmAllowance} KM</Col>
         </Row>
-        <br />
-
         <br />
         <Button
           variant="dark"
@@ -127,6 +149,27 @@ const RightColumn = () => {
           Allow 100 Token Transfer
         </Button>
       </Container>
+
+      <br />
+      <StripeCheckout
+        name="SamajUSD"
+        stripeKey="pk_test_51H4LU8KNc2CAIgjv7287ALDDieK9w456yt9gun8DvEgU45dCcIxspp7hwmILzHGetXHFxNynnbHJOBvu3l2lk1e0004I7LOSzl"
+        token={handleToken}
+        bitcoin
+        amount={10000}
+        billingAddress
+        shippingAddress
+        currency="USD"
+      />
+      <br />
+      <br />
+
+      <Button
+        variant="dark"
+        className="creator-button button"
+        onClick={() => {}}>
+        Become a creator{" "}
+      </Button>
     </div>
   );
 };

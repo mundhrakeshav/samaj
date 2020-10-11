@@ -131,6 +131,13 @@ const AddNewBlog = () => {
                   }}>
                   KM
                 </Dropdown.Item>
+                <Dropdown.Item
+                  onSelect={() => {
+                    setPaymentMethod("USD");
+                    setPaymentMethodId(3);
+                  }}>
+                  USD
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             <img

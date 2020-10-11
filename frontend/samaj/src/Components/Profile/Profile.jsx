@@ -4,6 +4,7 @@ import { UserContext } from "../../context/UserContext";
 import axios from "axios";
 import "./Profile.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [profileIsLoading, toggleProfileLoading] = useState(true);
@@ -53,18 +54,11 @@ const Profile = () => {
                 {user.numberOfBlogs} Blogs Yet
               </Card.Subtitle>
             </Card.Body>
-            <Button variant="dark">View Blogs</Button>
-          </Card>
-        </Row>
-        <Row>
-          <Card style={{ width: "100%" }} className="card patents-card">
-            <Card.Body>
-              <Card.Title>Patents</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">
-                {user.numberOfPatents} Patents Yet
-              </Card.Subtitle>
-            </Card.Body>
-            <Button variant="dark">View Patents</Button>
+            <Link to="/blogs" className="link">
+              <Button variant="dark" className="link-button">
+                View Blogs
+              </Button>
+            </Link>
           </Card>
         </Row>
         <Row>
@@ -89,6 +83,17 @@ const Profile = () => {
             <Button variant="dark">View Posts</Button>
           </Card>
         </Row>
+        <Row>
+          <Card style={{ width: "100%" }} className="card patents-card">
+            <Card.Body>
+              <Card.Title>Patents</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                {user.numberOfPatents} Patents Yet
+              </Card.Subtitle>
+            </Card.Body>
+            <Button variant="dark">View Patents</Button>
+          </Card>
+        </Row>{" "}
       </Container>
     );
   }

@@ -12,10 +12,41 @@ module.exports = {
     tellorGetLatestPrice: "0x1913713d479259580Be39969C89f4d162dA3b2d3",
     erc20NonApproveWithSignature: "0xA5D71ce2297Ff3c025Ece1F1Ea7975a76E0a1aD2",
     erc20ApproveWithSignature: "0x31DA332A7274B4E3E1d7456050Cd02B65B5dC9f0",
-    samaj: "0x1608c137c39d9bfDfdfa5A889A6dE5d86435a260",
+    samaj: "0xb2114Cf7eD64630A3556530BfbD9E6ae02daC537",
   },
   contractABI: {
     samaj: [
+      {
+        inputs: [],
+        payable: false,
+        stateMutability: "nonpayable",
+        type: "constructor",
+      },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: false,
+            internalType: "address",
+            name: "userAddress",
+            type: "address",
+          },
+          {
+            indexed: false,
+            internalType: "address payable",
+            name: "relayerAddress",
+            type: "address",
+          },
+          {
+            indexed: false,
+            internalType: "bytes",
+            name: "functionSignature",
+            type: "bytes",
+          },
+        ],
+        name: "MetaTransactionExecuted",
+        type: "event",
+      },
       {
         constant: false,
         inputs: [
@@ -60,6 +91,11 @@ module.exports = {
             name: "_ipfsDetailsHash",
             type: "string",
           },
+          {
+            internalType: "uint256",
+            name: "_payToken",
+            type: "uint256",
+          },
         ],
         name: "addMiscPost",
         outputs: [
@@ -85,6 +121,11 @@ module.exports = {
             internalType: "string",
             name: "_ipfsDetailsHash",
             type: "string",
+          },
+          {
+            internalType: "uint256",
+            name: "_payToken",
+            type: "uint256",
           },
         ],
         name: "addPatents",
@@ -244,37 +285,6 @@ module.exports = {
         type: "function",
       },
       {
-        inputs: [],
-        payable: false,
-        stateMutability: "nonpayable",
-        type: "constructor",
-      },
-      {
-        anonymous: false,
-        inputs: [
-          {
-            indexed: false,
-            internalType: "address",
-            name: "userAddress",
-            type: "address",
-          },
-          {
-            indexed: false,
-            internalType: "address payable",
-            name: "relayerAddress",
-            type: "address",
-          },
-          {
-            indexed: false,
-            internalType: "bytes",
-            name: "functionSignature",
-            type: "bytes",
-          },
-        ],
-        name: "MetaTransactionExecuted",
-        type: "event",
-      },
-      {
         constant: true,
         inputs: [
           {
@@ -282,8 +292,13 @@ module.exports = {
             name: "_userAccount",
             type: "address",
           },
+          {
+            internalType: "uint256",
+            name: "_id",
+            type: "uint256",
+          },
         ],
-        name: "getBlogs",
+        name: "getBlog",
         outputs: [
           {
             components: [
@@ -298,9 +313,9 @@ module.exports = {
                 type: "string",
               },
             ],
-            internalType: "struct Samaj.Blog[]",
-            name: "_blogs",
-            type: "tuple[]",
+            internalType: "struct Samaj.Blog",
+            name: "_blog",
+            type: "tuple",
           },
         ],
         payable: false,
@@ -351,8 +366,13 @@ module.exports = {
             name: "_userAccount",
             type: "address",
           },
+          {
+            internalType: "uint256",
+            name: "_id",
+            type: "uint256",
+          },
         ],
-        name: "getMiscPosts",
+        name: "getMiscPost",
         outputs: [
           {
             components: [
@@ -367,9 +387,9 @@ module.exports = {
                 type: "string",
               },
             ],
-            internalType: "struct Samaj.MiscPost[]",
-            name: "_miscPosts",
-            type: "tuple[]",
+            internalType: "struct Samaj.MiscPost",
+            name: "_miscPost",
+            type: "tuple",
           },
         ],
         payable: false,
@@ -405,8 +425,13 @@ module.exports = {
             name: "_userAccount",
             type: "address",
           },
+          {
+            internalType: "uint256",
+            name: "_id",
+            type: "uint256",
+          },
         ],
-        name: "getPatents",
+        name: "getPatent",
         outputs: [
           {
             components: [
@@ -421,9 +446,9 @@ module.exports = {
                 type: "string",
               },
             ],
-            internalType: "struct Samaj.Patent[]",
-            name: "_patents",
-            type: "tuple[]",
+            internalType: "struct Samaj.Patent",
+            name: "_patent",
+            type: "tuple",
           },
         ],
         payable: false,
@@ -438,8 +463,13 @@ module.exports = {
             name: "_userAccount",
             type: "address",
           },
+          {
+            internalType: "uint256",
+            name: "_id",
+            type: "uint256",
+          },
         ],
-        name: "getResearchPapers",
+        name: "getResearchPaper",
         outputs: [
           {
             components: [
@@ -454,9 +484,9 @@ module.exports = {
                 type: "string",
               },
             ],
-            internalType: "struct Samaj.ResearchPaper[]",
-            name: "_researchPapers",
-            type: "tuple[]",
+            internalType: "struct Samaj.ResearchPaper",
+            name: "_researchPaper",
+            type: "tuple",
           },
         ],
         payable: false,

@@ -15,6 +15,9 @@ import AddNewreasearchpaper from "../AddNewResearchpaper/AddNewResearchPaper";
 import AddNewPatent from "../AddNewPatent/AddNewPatent";
 import AddNewPost from "../AddNewPost/AddNewPost";
 import RightColumn from "./RightColumn/RightColumn";
+import BlogsPage from "../Profile/BlogsPage/BlogsPage";
+import DetailedBlog from "../Profile/DetailedBlog/DetailedBlog";
+
 const LandingPage = () => {
   const { samajContract, userAddress } = useContext(Web3Context);
   const { user, setUser } = useContext(UserContext);
@@ -50,6 +53,8 @@ const LandingPage = () => {
               />
               <Route path="/addnewpatent" component={AddNewPatent} exact />
               <Route path="/addnewpost" component={AddNewPost} exact />
+              <Route path="/blogs" component={BlogsPage} exact />
+              <Route path="/blogs/:blogId" component={DetailedBlog} exact />
             </Switch>
           </Col>
           <Col xl={3} className="right-column">

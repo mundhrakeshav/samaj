@@ -1,3 +1,7 @@
 frontend/samaj/node_modules/
 frontend/samaj/yarn.lock
 frontend/samaj/package-lock.json
+
+backend/config.js
+backend/node_modules/
+backend/package-lock.json

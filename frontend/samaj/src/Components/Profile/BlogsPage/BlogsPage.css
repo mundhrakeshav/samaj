@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap");
+.blog {
+  padding: 20px;
+}
+
+.blog-body {
+  max-height: 20vh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  font-family: "Roboto", sans-serif;
+}
+
+.blog-title {
+  font-weight: 700;
+}
+
+.blogs-wrapper {
+  margin: 2vh 2vw;
+}
+
+.link-to-blog-button .link-to-blog {
+  width: 100%;
+  min-width: 50vw;
+}

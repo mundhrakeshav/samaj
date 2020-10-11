@@ -1,5 +1,21 @@
-import React from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import React, { useState, useContext } from "react";
+import {
+  Form,
+  Button,
+  Row,
+  Col,
+  Container,
+  Dropdown,
+  Spinner,
+} from "react-bootstrap";
+import { Web3Context } from "../../context/Web3Context";
+
+const IpfsHttpClient = require("ipfs-http-client");
+const ipfs = IpfsHttpClient({
+  host: "ipfs.infura.io",
+  port: 5001,
+  protocol: "http",
+});
 
 const AddNewPatent = () => {
   return (
@@ -26,24 +42,29 @@ const AddNewPatent = () => {
         <Row>
           <Col>
             <br />
-            <Button variant="dark" type="submit">
+            <Button
+              variant="dark"
+              type="submit"
+              onClick={() => {
+                alert("Patents Havent been enabled");
+              }}>
               Add Patent
             </Button>
           </Col>
           <Col>
             <Form.File
               className="profile-image-input"
-              label="Attach a Image"
-              // onChange={(event) => {
-              //   event.preventDefault();
-              //   setImage(URL.createObjectURL(event.target.files[0]));
-              //   const file = event.target.files[0];
-              //   const reader = new window.FileReader();
-              //   reader.readAsArrayBuffer(file);
-              //   reader.onloadend = () => {
-              //     setBuffer(Buffer(reader.result));
-              //   };
-              // }}
+              label="Attach a File"
+              onChange={(event) => {
+                event.preventDefault();
+                //   setImage(URL.createObjectURL(event.target.files[0]));
+                //   const file = event.target.files[0];
+                //   const reader = new window.FileReader();
+                //   reader.readAsArrayBuffer(file);
+                //   reader.onloadend = () => {
+                //     setBuffer(Buffer(reader.result));
+                //   };
+              }}
             />
           </Col>
         </Row>

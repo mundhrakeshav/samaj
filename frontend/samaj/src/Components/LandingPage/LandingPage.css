@@ -7,7 +7,7 @@
 .left-column {
   background-image: linear-gradient(rgb(17, 17, 17), rgb(24, 24, 24));
   height: 100%;
-  min-height: 106vh;
+  min-height: 150vh;
 }
 
 .middle-column {
@@ -15,11 +15,11 @@
   border-left: rgb(59, 59, 59) solid 1px;
   border-right: rgb(59, 59, 59) solid 1px;
   height: 100%;
-  min-height: 100vh;
+  min-height: 150vh;
 }
 
 .right-column {
   background-image: linear-gradient(rgb(17, 17, 17), rgb(24, 24, 24));
   height: 100%;
-  min-height: 100vh;
+  min-height: 150vh;
 }

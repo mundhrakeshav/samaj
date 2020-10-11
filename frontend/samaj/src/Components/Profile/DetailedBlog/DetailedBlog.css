@@ -1,0 +1,14 @@
+.blog-title-detailed-blog {
+  padding: 3vh 2vw;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.blog-body-detailed-blog {
+  font-size: 1.1rem;
+  font-weight: 400;
+  /* overflow: ; */
+}
+
+.card-wrapper-detailed-blog {
+  margin: 3vh 3vw;
+}
