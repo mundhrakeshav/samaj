@@ -11,6 +11,9 @@
   "dependencies": {
     "@biconomy/mexa": "^1.5.13",
     "cors": "^2.8.5",
+    "ethereumjs-abi": "^0.6.8",
+    "ethereumjs-util": "^7.0.6",
+    "ethereumjs-wallet": "^1.0.1",
     "express": "^4.17.1",
     "stripe": "^8.109.0",
     "uuid": "^8.3.1",

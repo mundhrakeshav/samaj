@@ -5,13 +5,13 @@
 }
 
 .left-column {
-  background-image: linear-gradient(rgb(17, 17, 17), rgb(24, 24, 24));
+  background-image: linear-gradient(rgb(27, 27, 27), rgb(34, 34, 34));
   height: 100%;
   min-height: 150vh;
 }
 
 .middle-column {
-  background-image: linear-gradient(rgb(12, 12, 12), rgb(14, 14, 14));
+  background-image: linear-gradient(rgb(17, 17, 17), rgb(24, 24, 24));
   border-left: rgb(59, 59, 59) solid 1px;
   border-right: rgb(59, 59, 59) solid 1px;
   height: 100%;
@@ -19,7 +19,7 @@
 }
 
 .right-column {
-  background-image: linear-gradient(rgb(17, 17, 17), rgb(24, 24, 24));
+  background-image: linear-gradient(rgb(27, 27, 27), rgb(34, 34, 34));
   height: 100%;
   min-height: 150vh;
 }

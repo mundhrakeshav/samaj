@@ -12,7 +12,7 @@ module.exports = {
     tellorGetLatestPrice: "0x1913713d479259580Be39969C89f4d162dA3b2d3",
     erc20NonApproveWithSignature: "0xA5D71ce2297Ff3c025Ece1F1Ea7975a76E0a1aD2",
     erc20ApproveWithSignature: "0x31DA332A7274B4E3E1d7456050Cd02B65B5dC9f0",
-    samaj: "0x23D9811eab5Dcc124232B0fBF9fa2e0950ebd4f7",
+    samaj: "0x3603469256423d0cE53755E52F2cCFA12e02Cae7",
     usdToken: "0x92C35d52724eE277f3A53323071659DB47E55bf7",
   },
   contractABI: {
@@ -295,31 +295,6 @@ module.exports = {
         type: "function",
       },
       {
-        constant: false,
-        inputs: [
-          {
-            internalType: "uint256",
-            name: "_amount",
-            type: "uint256",
-          },
-          {
-            internalType: "address",
-            name: "_senderAddress",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "_recieverAddresss",
-            type: "address",
-          },
-        ],
-        name: "supportUserKM",
-        outputs: [],
-        payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
-      },
-      {
         inputs: [],
         payable: false,
         stateMutability: "nonpayable",
@@ -349,31 +324,6 @@ module.exports = {
         ],
         name: "MetaTransactionExecuted",
         type: "event",
-      },
-      {
-        constant: false,
-        inputs: [
-          {
-            internalType: "uint256",
-            name: "_amount",
-            type: "uint256",
-          },
-          {
-            internalType: "address",
-            name: "_senderAddress",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "_recieverAddresss",
-            type: "address",
-          },
-        ],
-        name: "supportUserDai",
-        outputs: [],
-        payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
       },
       {
         constant: true,

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Navbar,
   Container,
@@ -13,9 +13,16 @@ import {
 import { MdPermIdentity } from "react-icons/md";
 import "./Appbar.css";
 import { Web3Context } from "../../context/Web3Context";
+import { useHistory } from "react-router-dom";
 
 const Appbar = () => {
   const { userAddress } = useContext(Web3Context);
+  const [searchAddress, setSearchAddress] = useState();
+  let history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/user/${searchAddress}`);
+  };
 
   return (
     <Container fluid className="appbar-container">
@@ -29,12 +36,15 @@ const Appbar = () => {
             </Navbar>
           </Col>
           <Col>
-            <Form inline className="form">
+            <Form inline className="form" onSubmit={handleClick}>
               <FormControl
                 type="text"
                 size="sm"
                 placeholder="Search"
                 className="mr-sm-2 form-inputbox"
+                onChange={(event) => {
+                  setSearchAddress(event.target.value);
+                }}
               />
             </Form>
           </Col>

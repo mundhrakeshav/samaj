@@ -25,9 +25,11 @@ const RightColumn = () => {
     userAddress,
     erc20ApproveWithSignContract,
     erc20NonApproveWithSignContract,
+    usdContract,
     sendTransactionToERC20ApproveWithSignature,
   } = useContext(Web3Context);
   const [daiBalance, setDaiBalance] = useState(0);
+  const [usdBalance, setUSDBalance] = useState(0);
   const [kmBalance, setkmBalance] = useState(0);
   const [daiAllowance, setDaiAllowance] = useState(0);
   const [kmAllowance, setkmAllowance] = useState(0);
@@ -92,6 +94,15 @@ const RightColumn = () => {
       .then((km) => {
         setkmAllowance(km / 10 ** 18);
       });
+
+    usdContract.methods
+      .balanceOf(userAddress)
+      .call()
+      .then((usd) => {
+        setUSDBalance(usd / 10 ** 18);
+      });
+
+    // console.log(usdContract.methods);
   };
 
   const increaseDaiAllowance = () => {
@@ -151,14 +162,25 @@ const RightColumn = () => {
       </Container>
 
       <br />
+
+      <Container>
+        <hr />
+        <Row className="km-head head">USD: </Row>
+        <Row className="km-balance balance">
+          <Col>Balance:</Col>
+          <Col>{usdBalance} USD</Col>
+        </Row>
+
+        <br />
+      </Container>
       <StripeCheckout
         name="SamajUSD"
         stripeKey="pk_test_51H4LU8KNc2CAIgjv7287ALDDieK9w456yt9gun8DvEgU45dCcIxspp7hwmILzHGetXHFxNynnbHJOBvu3l2lk1e0004I7LOSzl"
         token={handleToken}
         bitcoin
         amount={10000}
-        billingAddress
-        shippingAddress
+        // billingAddress
+        // shippingAddress
         currency="USD"
       />
       <br />

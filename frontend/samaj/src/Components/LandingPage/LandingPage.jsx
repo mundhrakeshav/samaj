@@ -6,7 +6,7 @@ import HomePage from "../Home/HomePage";
 import Profile from "../Profile/Profile";
 import { Web3Context } from "../../context/Web3Context";
 import { UserContext } from "../../context/UserContext";
-
+import PapersPage from "../Profile/PapersPage/PapersPage";
 import LeftColumn from "./LeftColumn/LeftColumn";
 import RegisterScreen from "./RegisterLandingScreen/RegisterScreen";
 import { useState } from "react";
@@ -17,6 +17,7 @@ import AddNewPost from "../AddNewPost/AddNewPost";
 import RightColumn from "./RightColumn/RightColumn";
 import BlogsPage from "../Profile/BlogsPage/BlogsPage";
 import DetailedBlog from "../Profile/DetailedBlog/DetailedBlog";
+import SearchPage from "../SearchPage/SearchPage";
 
 const LandingPage = () => {
   const { samajContract, userAddress } = useContext(Web3Context);
@@ -54,7 +55,11 @@ const LandingPage = () => {
               <Route path="/addnewpatent" component={AddNewPatent} exact />
               <Route path="/addnewpost" component={AddNewPost} exact />
               <Route path="/blogs" component={BlogsPage} exact />
+              {/* //researchPaper */}
+              <Route path="/researchPaper" component={PapersPage} exact />
+
               <Route path="/blogs/:blogId" component={DetailedBlog} exact />
+              <Route path="/user/:searchAddress" component={SearchPage} exact />
             </Switch>
           </Col>
           <Col xl={3} className="right-column">

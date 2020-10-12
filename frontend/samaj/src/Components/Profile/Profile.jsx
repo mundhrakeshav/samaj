@@ -68,8 +68,12 @@ const Profile = () => {
               <Card.Subtitle className="mb-2 text-muted">
                 {user.numberOfResearchPapers} Papers Yet
               </Card.Subtitle>
-            </Card.Body>
-            <Button variant="dark">View ResearchPapers</Button>
+            </Card.Body>{" "}
+            <Link to="/researchPaper" className="link">
+              <Button variant="dark" className="link-button">
+                View ResearchPapers
+              </Button>{" "}
+            </Link>
           </Card>
         </Row>
         <Row>

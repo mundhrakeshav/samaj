@@ -13,11 +13,11 @@ let _web3 = new Web3();
 const Web3ContextProvider = (props) => {
   const [userAddress, setAddress] = useState(null);
   const [samajContract, setSamajContract] = useState();
+  const [usdContract, setUSDContract] = useState();
   const [
     erc20ApproveWithSignContract,
     seterc20ApproveWithSignContract,
   ] = useState();
-
   const [
     erc20NonApproveWithSignContract,
     seterc20NonApproveWithSignContract,
@@ -55,10 +55,15 @@ const Web3ContextProvider = (props) => {
               ContractsMetaData.contractABI.erc20NonApproveWithSignature,
               ContractsMetaData.contractAddress.erc20NonApproveWithSignature
             );
+            const _usdContract = new web3.eth.Contract(
+              ContractsMetaData.contractABI.usdToken,
+              ContractsMetaData.contractAddress.usdToken
+            );
             _erc20ApproveWithSignatureContract.setProvider(biconomy);
             _erc20NonApproveWithSignatureContract.setProvider(biconomy);
             _samajContract.setProvider(biconomy);
-
+            _usdContract.setProvider(biconomy);
+            setUSDContract(_usdContract);
             setSamajContract(_samajContract);
             seterc20ApproveWithSignContract(_erc20ApproveWithSignatureContract);
             seterc20NonApproveWithSignContract(
@@ -239,6 +244,7 @@ const Web3ContextProvider = (props) => {
         userAddress,
         samajContract,
         isLoading,
+        usdContract,
         erc20ApproveWithSignContract,
         erc20NonApproveWithSignContract,
         sendTransaction,
