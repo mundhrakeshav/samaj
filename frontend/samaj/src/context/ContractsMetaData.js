@@ -12,7 +12,7 @@ module.exports = {
     tellorGetLatestPrice: "0x1913713d479259580Be39969C89f4d162dA3b2d3",
     erc20NonApproveWithSignature: "0xA5D71ce2297Ff3c025Ece1F1Ea7975a76E0a1aD2",
     erc20ApproveWithSignature: "0x31DA332A7274B4E3E1d7456050Cd02B65B5dC9f0",
-    samaj: "0x23D9811eab5Dcc124232B0fBF9fa2e0950ebd4f7",
+    samaj: "0x49c47D0751083cE3b721c85C3aB93Ba8831254a1",
     usdToken: "0x92C35d52724eE277f3A53323071659DB47E55bf7",
   },
   contractABI: {
@@ -137,6 +137,26 @@ module.exports = {
             type: "bool",
           },
         ],
+        payable: false,
+        stateMutability: "nonpayable",
+        type: "function",
+      },
+      {
+        constant: false,
+        inputs: [
+          {
+            internalType: "string",
+            name: "_name",
+            type: "string",
+          },
+          {
+            internalType: "string",
+            name: "_symbol",
+            type: "string",
+          },
+        ],
+        name: "becomeCreator",
+        outputs: [],
         payable: false,
         stateMutability: "nonpayable",
         type: "function",
@@ -313,7 +333,7 @@ module.exports = {
             type: "address",
           },
         ],
-        name: "supportUserKM",
+        name: "supportUserDai",
         outputs: [],
         payable: false,
         stateMutability: "nonpayable",
@@ -354,6 +374,31 @@ module.exports = {
         constant: false,
         inputs: [
           {
+            internalType: "address",
+            name: "_creatorAddress",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "_amountOfToken",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "_payToken",
+            type: "uint256",
+          },
+        ],
+        name: "purchaseCreatorToken",
+        outputs: [],
+        payable: false,
+        stateMutability: "nonpayable",
+        type: "function",
+      },
+      {
+        constant: false,
+        inputs: [
+          {
             internalType: "uint256",
             name: "_amount",
             type: "uint256",
@@ -369,10 +414,31 @@ module.exports = {
             type: "address",
           },
         ],
-        name: "supportUserDai",
+        name: "supportUserKM",
         outputs: [],
         payable: false,
         stateMutability: "nonpayable",
+        type: "function",
+      },
+      {
+        constant: true,
+        inputs: [
+          {
+            internalType: "address",
+            name: "",
+            type: "address",
+          },
+        ],
+        name: "creatorsContracts",
+        outputs: [
+          {
+            internalType: "address",
+            name: "",
+            type: "address",
+          },
+        ],
+        payable: false,
+        stateMutability: "view",
         type: "function",
       },
       {
@@ -598,6 +664,11 @@ module.exports = {
           {
             internalType: "bool",
             name: "isRegistered",
+            type: "bool",
+          },
+          {
+            internalType: "bool",
+            name: "isCreator",
             type: "bool",
           },
           {

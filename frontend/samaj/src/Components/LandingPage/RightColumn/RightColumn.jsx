@@ -179,8 +179,6 @@ const RightColumn = () => {
         token={handleToken}
         bitcoin
         amount={10000}
-        // billingAddress
-        // shippingAddress
         currency="USD"
       />
       <br />
@@ -190,7 +188,7 @@ const RightColumn = () => {
         variant="dark"
         className="creator-button button"
         onClick={() => {}}>
-        Become a creator{" "}
+        Become a creator
       </Button>
     </div>
   );

@@ -58,14 +58,6 @@ const LeftColumn = () => {
           </Button>
         </Link>
       </Row>
-      <br />
-      <Row>
-        <Link to="/approvals">
-          <Button variant="dark" className="left-column-button">
-            <FaMoneyBillAlt /> Approvals
-          </Button>
-        </Link>
-      </Row>
     </Container>
   );
 };

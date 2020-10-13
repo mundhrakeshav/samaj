@@ -73,6 +73,31 @@ const SearchPage = () => {
     setLoading(false);
   };
 
+  const purchaseButton = () => {
+    if (user.isCreator) {
+      return (
+        <Col>
+          <Button
+            className="purchase-button"
+            variant="dark"
+            size="sm"
+            onClick={() => {
+              const functionData = samajContract.methods.purchaseCreatorToken(
+                searchAddress,
+                "10000000000000000000",
+                paymentMethodId
+              );
+              sendTransaction(functionData);
+            }}>
+            Purchase
+          </Button>
+        </Col>
+      );
+    } else {
+      return <React.Fragment></React.Fragment>;
+    }
+  };
+
   if (isLoading) {
     return (
       <Spinner animation="border" role="status">
@@ -101,47 +126,54 @@ const SearchPage = () => {
                 </Col>
                 <br />
                 <Col>
-                  <Button
-                    className="tip-button"
-                    variant="dark"
-                    onClick={() => {
-                      if (paymentMethodId == 1) supportUserDai();
-                      else supportUserKM();
-                    }}>
-                    Support User
-                  </Button>
-                  <Dropdown className="dropdown">
-                    <Dropdown.Toggle
-                      variant="dark"
-                      id="dropdown-basic"
-                      size="sm">
-                      {paymentMethod}
-                    </Dropdown.Toggle>
+                  <Row>
+                    <Dropdown className="dropdown">
+                      <Dropdown.Toggle
+                        variant="dark"
+                        id="dropdown-basic"
+                        size="sm">
+                        {paymentMethod}
+                      </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                      <Dropdown.Item
-                        onSelect={() => {
-                          setPaymentMethod("DAI");
-                          setPaymentMethodId(1);
+                      <Dropdown.Menu>
+                        <Dropdown.Item
+                          onSelect={() => {
+                            setPaymentMethod("DAI");
+                            setPaymentMethodId(1);
+                          }}>
+                          DAI
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onSelect={() => {
+                            setPaymentMethod("KM");
+                            setPaymentMethodId(2);
+                          }}>
+                          KM
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onSelect={() => {
+                            setPaymentMethod("USD");
+                            setPaymentMethodId(3);
+                          }}>
+                          USD
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                    <Col>
+                      <Button
+                        className="tip-button"
+                        variant="dark"
+                        size="sm"
+                        onClick={() => {
+                          // console.log(user);
+                          if (paymentMethodId == 1) supportUserDai();
+                          else supportUserKM();
                         }}>
-                        DAI
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onSelect={() => {
-                          setPaymentMethod("KM");
-                          setPaymentMethodId(2);
-                        }}>
-                        KM
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onSelect={() => {
-                          setPaymentMethod("USD");
-                          setPaymentMethodId(3);
-                        }}>
-                        USD
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
+                        Support User
+                      </Button>
+                    </Col>
+                    {purchaseButton()}
+                  </Row>
                 </Col>
               </Col>
             </Row>
