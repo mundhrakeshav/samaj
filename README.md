@@ -2,7 +2,7 @@
 
 ---
 
-**Samaj** is a **decenteralised** social network built on **Ethereum** and **IPFS**. It's an attempt (currently-not Complete) to make social network's **censorless** and **free of any influence**. Apart from that it there has been a huge focus on **UX**, as blockchain based DApps apparently have a huge UX barrier of getting a wallet and getting ether (Ethereum's native currency) from some exchange or some other place and then using the app.
+**Samaj** is a **decenteralised** social network built on **Ethereum** and **IPFS**. It's an attempt (currently-not Complete) to make social network's **censorless** and **free of any influence**. Apart from that it there has been a huge focus on **UX**, as blockchain based DApps have a huge UX barrier of getting a wallet and getting ether (Ethereum's native currency) from some exchange or some other place and then using the app.
 
 ## Idea
 
