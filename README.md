@@ -31,8 +31,8 @@ function chargeGasFeeInERC20(uint _amountInWei, address _userAddress) public ret
   erc20Contract.transferFrom(_userAddress, address(this), amount);
 }
 
-function getLatestPrice(uint _dataId) view public  returns(uint value) {   
-   return tellorContract.readTellorValue(_dataId)/1e6;     
+function getLatestPrice(uint _dataId) view public  returns(uint value) {
+   return tellorContract.readTellorValue(_dataId)/1e6;
 }
 ```
 
@@ -48,17 +48,15 @@ After Building:
 
 1. You have to register with a username, a bio and a profile image.
 
-    ![Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-21-51.png](Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-21-51.png)
+   ![Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-21-51.png](Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-21-51.png)
 
-2. After registering you get taken to home page[which isn't ready] so navigate to profile page and you can check out your profile and summary of all your uploads. 
+2. After registering you get taken to home page[which isn't ready] so navigate to profile page and you can check out your profile and summary of all your uploads.
 
-    ![Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-29-44.png](Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-29-44.png)
+   ![Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-29-44.png](Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-29-44.png)
 
-3. The column on right has details of various ERC20 tokens you can pay with, it has details like balance and allowanace to our contract, Also you can allow us to handle 100 Tokens on your account. Also, We've a option for Pay with card.   
+3. The column on right has details of various ERC20 tokens you can pay with, it has details like balance and allowanace to our contract, Also you can allow us to handle 100 Tokens on your account. Also, We've a option for Pay with card.
 
-    ![Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-34-31.png](Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-34-31.png)
+   ![Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-34-31.png](Samaj%206100ad238dcd4420aca9e833bd8758f0/Screenshot_from_2020-10-13_22-34-31.png)
 
 4. Clicking on View Blog button or View Post button you can view detailed posts.
 5. Also we have a search option where you can search a user with their address and on search page you can support the user.
-
-[Frontend](https://www.notion.so/Frontend-e8a19d07e1c042a9a425e5bc0f312785)
