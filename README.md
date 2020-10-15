@@ -9,7 +9,7 @@
 The idea is to let people interact with the **dapp** using any **ERC20** token as **gasFee** instead of Ether and cutting a lot of trouble. We've used unleashed the supremacy of meta-transactions to do this.
 
 Thanks, to [Biconomy's](https://github.com/bcnmy) API used to relay meta-transactions to network and [Tellor's](https://github.com/tellor-io) Price-feed API to get on contract value for various ERC20 tokens and charge gas fee accordingly.
-
+Basically letting users pay gas fee in any erc20 tokens also by card payments. By allowing contract to transfer on user's behalf and using decentralised oracles to get on chain price feed to charge them in erc20.
 Also, we've a pay via card option such that whatever amount user deposits is mapped to their address on a contract and we use price feed API from Tellor to get exact value for USDtoETH, for each transaction they can be charged the same amount in USD instead of ETH or WEI.
 
 ### Code sample to charge gasFee in ERC20
