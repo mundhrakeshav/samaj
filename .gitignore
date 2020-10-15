@@ -1,4 +1,7 @@
 frontend/samaj/node_modules/
+frontend/samaj/.firebase/
+frontend/samaj/firebase.json
+frontend/samaj/.firebaserc
 frontend/samaj/yarn.lock
 frontend/samaj/package-lock.json
 

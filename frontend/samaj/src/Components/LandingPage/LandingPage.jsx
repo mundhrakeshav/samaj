@@ -18,6 +18,8 @@ import RightColumn from "./RightColumn/RightColumn";
 import BlogsPage from "../Profile/BlogsPage/BlogsPage";
 import DetailedBlog from "../Profile/DetailedBlog/DetailedBlog";
 import SearchPage from "../SearchPage/SearchPage";
+import SearchBlog from "../SearchPage/SearchBlogs/SearchBlogs";
+import SearchPapers from "../SearchPage/SearchPapers/SearchPapers";
 
 const LandingPage = () => {
   const { samajContract, userAddress } = useContext(Web3Context);
@@ -60,6 +62,16 @@ const LandingPage = () => {
 
               <Route path="/blogs/:blogId" component={DetailedBlog} exact />
               <Route path="/user/:searchAddress" component={SearchPage} exact />
+              <Route
+                path="/searchblogs/:searchAddress/:numberOfBlogs"
+                component={SearchBlog}
+                exact
+              />
+              <Route
+                path="/searchpapers/:searchAddress/:numberOfPapers"
+                component={SearchPapers}
+                exact
+              />
             </Switch>
           </Col>
           <Col xl={3} className="right-column">

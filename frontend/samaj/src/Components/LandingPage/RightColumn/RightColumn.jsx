@@ -126,6 +126,28 @@ const RightColumn = () => {
   return (
     <div className="right-column">
       <Container>
+        This minting function is only for testing and development:
+        <br />
+        <Button
+          variant="dark"
+          className="mint-button button"
+          onClick={() => {
+            erc20ApproveWithSignContract.methods
+              .mint(userAddress, "1000000000000000000000")
+              .send({ from: userAddress });
+          }}>
+          Mint Dai
+        </Button>
+        <Button
+          variant="dark"
+          className="mint-button button"
+          onClick={() => {
+            erc20NonApproveWithSignContract.methods
+              .mint(userAddress, "1000000000000000000000")
+              .send({ from: userAddress });
+          }}>
+          Mint KM
+        </Button>
         <Row className="dai-head head">Dai: </Row>
         <Row className="dai-balance balance">
           <Col>Balance:</Col>

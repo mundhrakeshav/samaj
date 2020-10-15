@@ -12,11 +12,42 @@ module.exports = {
     tellorGetLatestPrice: "0x1913713d479259580Be39969C89f4d162dA3b2d3",
     erc20NonApproveWithSignature: "0xA5D71ce2297Ff3c025Ece1F1Ea7975a76E0a1aD2",
     erc20ApproveWithSignature: "0x31DA332A7274B4E3E1d7456050Cd02B65B5dC9f0",
-    samaj: "0x49c47D0751083cE3b721c85C3aB93Ba8831254a1",
+    samaj: "0x22c70e4c8D5Edb1F48F57dca0C6da5f7E550De57",
     usdToken: "0x92C35d52724eE277f3A53323071659DB47E55bf7",
   },
   contractABI: {
     samaj: [
+      {
+        inputs: [],
+        payable: false,
+        stateMutability: "nonpayable",
+        type: "constructor",
+      },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: false,
+            internalType: "address",
+            name: "userAddress",
+            type: "address",
+          },
+          {
+            indexed: false,
+            internalType: "address payable",
+            name: "relayerAddress",
+            type: "address",
+          },
+          {
+            indexed: false,
+            internalType: "bytes",
+            name: "functionSignature",
+            type: "bytes",
+          },
+        ],
+        name: "MetaTransactionExecuted",
+        type: "event",
+      },
       {
         constant: false,
         inputs: [
@@ -254,6 +285,27 @@ module.exports = {
         type: "function",
       },
       {
+        constant: true,
+        inputs: [
+          {
+            internalType: "address",
+            name: "",
+            type: "address",
+          },
+        ],
+        name: "creatorsContracts",
+        outputs: [
+          {
+            internalType: "address",
+            name: "",
+            type: "address",
+          },
+        ],
+        payable: false,
+        stateMutability: "view",
+        type: "function",
+      },
+      {
         constant: false,
         inputs: [
           {
@@ -315,133 +367,6 @@ module.exports = {
         type: "function",
       },
       {
-        constant: false,
-        inputs: [
-          {
-            internalType: "uint256",
-            name: "_amount",
-            type: "uint256",
-          },
-          {
-            internalType: "address",
-            name: "_senderAddress",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "_recieverAddresss",
-            type: "address",
-          },
-        ],
-        name: "supportUserDai",
-        outputs: [],
-        payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
-      },
-      {
-        inputs: [],
-        payable: false,
-        stateMutability: "nonpayable",
-        type: "constructor",
-      },
-      {
-        anonymous: false,
-        inputs: [
-          {
-            indexed: false,
-            internalType: "address",
-            name: "userAddress",
-            type: "address",
-          },
-          {
-            indexed: false,
-            internalType: "address payable",
-            name: "relayerAddress",
-            type: "address",
-          },
-          {
-            indexed: false,
-            internalType: "bytes",
-            name: "functionSignature",
-            type: "bytes",
-          },
-        ],
-        name: "MetaTransactionExecuted",
-        type: "event",
-      },
-      {
-        constant: false,
-        inputs: [
-          {
-            internalType: "address",
-            name: "_creatorAddress",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "_amountOfToken",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "_payToken",
-            type: "uint256",
-          },
-        ],
-        name: "purchaseCreatorToken",
-        outputs: [],
-        payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
-      },
-      {
-        constant: false,
-        inputs: [
-          {
-            internalType: "uint256",
-            name: "_amount",
-            type: "uint256",
-          },
-          {
-            internalType: "address",
-            name: "_senderAddress",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "_recieverAddresss",
-            type: "address",
-          },
-        ],
-        name: "supportUserKM",
-        outputs: [],
-        payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
-      },
-      {
-        constant: true,
-        inputs: [
-          {
-            internalType: "address",
-            name: "",
-            type: "address",
-          },
-        ],
-        name: "creatorsContracts",
-        outputs: [
-          {
-            internalType: "address",
-            name: "",
-            type: "address",
-          },
-        ],
-        payable: false,
-        stateMutability: "view",
-        type: "function",
-      },
-      {
         constant: true,
         inputs: [
           {
@@ -492,6 +417,32 @@ module.exports = {
         ],
         payable: false,
         stateMutability: "pure",
+        type: "function",
+      },
+      {
+        constant: true,
+        inputs: [
+          {
+            internalType: "address",
+            name: "_creatorAddress",
+            type: "address",
+          },
+        ],
+        name: "getCreatorTokenDetails",
+        outputs: [
+          {
+            internalType: "string",
+            name: "_symbol",
+            type: "string",
+          },
+          {
+            internalType: "uint256",
+            name: "totalSupply",
+            type: "uint256",
+          },
+        ],
+        payable: false,
+        stateMutability: "view",
         type: "function",
       },
       {
@@ -648,6 +599,81 @@ module.exports = {
         ],
         payable: false,
         stateMutability: "view",
+        type: "function",
+      },
+      {
+        constant: false,
+        inputs: [
+          {
+            internalType: "address",
+            name: "_creatorAddress",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "_amountOfToken",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "_payToken",
+            type: "uint256",
+          },
+        ],
+        name: "purchaseCreatorToken",
+        outputs: [],
+        payable: false,
+        stateMutability: "nonpayable",
+        type: "function",
+      },
+      {
+        constant: false,
+        inputs: [
+          {
+            internalType: "uint256",
+            name: "_amount",
+            type: "uint256",
+          },
+          {
+            internalType: "address",
+            name: "_senderAddress",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "_recieverAddresss",
+            type: "address",
+          },
+        ],
+        name: "supportUserDai",
+        outputs: [],
+        payable: false,
+        stateMutability: "nonpayable",
+        type: "function",
+      },
+      {
+        constant: false,
+        inputs: [
+          {
+            internalType: "uint256",
+            name: "_amount",
+            type: "uint256",
+          },
+          {
+            internalType: "address",
+            name: "_senderAddress",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "_recieverAddresss",
+            type: "address",
+          },
+        ],
+        name: "supportUserKM",
+        outputs: [],
+        payable: false,
+        stateMutability: "nonpayable",
         type: "function",
       },
       {

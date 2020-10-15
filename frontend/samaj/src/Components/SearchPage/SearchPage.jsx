@@ -185,7 +185,9 @@ const SearchPage = () => {
                     {user.numberOfBlogs} Blogs Yet
                   </Card.Subtitle>
                 </Card.Body>
-                <Link to="/blogs" className="link">
+                <Link
+                  to={`/searchblogs/${searchAddress}/${user.numberOfBlogs}`}
+                  className="link">
                   <Button variant="dark" className="link-button">
                     View Blogs
                   </Button>
@@ -202,7 +204,13 @@ const SearchPage = () => {
                     {user.numberOfResearchPapers} Papers Yet
                   </Card.Subtitle>
                 </Card.Body>
-                <Button variant="dark">View ResearchPapers</Button>
+                <Link
+                  to={`/searchpapers/${searchAddress}/${user.numberOfResearchPapers}`}
+                  className="link">
+                  <Button variant="dark" className="link-button">
+                    View ResearchPapers
+                  </Button>
+                </Link>
               </Card>
             </Row>
             <Row>
